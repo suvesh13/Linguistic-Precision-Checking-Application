@@ -1,0 +1,98 @@
+ <!-- 
+
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Linguistic Precision</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}">
+    </head>
+    <body>
+     <h1>Linguistic Precision Tool</h1>
+     <form action="/" method="post" class="textbox-form">
+       <div class="textbox">
+        <textarea name="prompt" id="prompt" required>{{prompt}}</textarea>
+   
+        <div id="buttonContainer">
+            <button type="submit" name ="action" value="generate" id="butt">Generate Text</button>
+            <button type="submit" name="action" value="grammar" id="butt">Grammar Check</button>
+            <button type="submit" name="action" value="spell" id="butt">Spell Check</button>
+        </div>
+    </div>
+     </form>
+    
+
+     {% if generated_text %}
+     <div>
+         <h2>Generated Text:</h2>
+         <p>{{ generated_text }}</p>
+     </div>
+ {% endif %}
+
+ {% if spelling_errors %}
+     <div>
+         <h2>Possible Corrections:</h2>
+         <p>{{ spelling_errors }}</p>
+     </div>
+ {% endif %}
+
+ {% if grammar_errors %}
+     <div>
+         <h2>Grammar Errors:</h2>
+         <p>{{ grammar_errors }}</p>
+     </div>
+ {% endif %}
+
+     
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguistic Precision</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Linguistic Precision Tool</h1>
+    </header>
+
+    <main>
+        <form action="/" method="post" class="textbox-form">
+            <div class="textbox">
+                <textarea name="prompt" id="prompt" required>{{ prompt }}</textarea>
+                <div class="button-container">
+                    <button type="submit" name="action" value="generate" class="btn generate-btn">Generate Text</button>
+                    <button type="submit" name="action" value="grammar" class="btn grammar-btn">Grammar Check</button>
+                    <button type="submit" name="action" value="spell" class="btn spell-btn">Spell Check</button>
+                </div>
+            </div>
+        </form>
+
+        {% if generated_text %}
+            <div class="result generated-text">
+                <h2>Generated Text:</h2>
+                <p>{{ generated_text }}</p>
+            </div>
+        {% endif %}
+
+        {% if spelling_errors %}
+            <div class="result spelling-errors">
+                <h2>Possible Corrections:</h2>
+                <p>{{ spelling_errors }}</p>
+            </div>
+        {% endif %}
+
+        {% if grammar_errors %}
+            <div class="result grammar-errors">
+                <h2>Grammar Errors:</h2>
+                <p>{{ grammar_errors }}</p>
+            </div>
+        {% endif %}
+    </main>
+</body>
+</html>
